@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios de JavaScript</title>
+    <style>
+        body {
+            font: caption;
+            margin: 25px;
+        }
+
+        .botao {
+            padding: 15px;
+        }
+
+        #MkGreen {
+            background-color: green;
+        }
+
+        #MkRed {
+            background-color: red;
+        }
+
+        table {
+            border: 2px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>1 - Desafio das Mensagens</h1>
+    <input type="button" value="Botão 1" class="botao" onclick="mensagBtn1()">
+    <input type="button" value="Botão 2" class="botao" onclick="mensagBtn2()">
+    <input type="button" value="Botão 3" class="botao" onclick="mensagBtn3()">
+
+    <h1>2 - Desafio de Boas-Vindas</h1>
+    <input type="button" value="Inicie o desafio" class="botao" onclick="identVisitante()">
+
+    <h1>3 - Desafio do Antes e Depois</h1>
+    <input type="button" value="Antecessor e Sucessor" class="botao" onclick="anteSuce()">
+
+    <h1>4 - Desafio da Calculadora de Troco</h1>
+    <input type="button" value="Comprar produto" class="botao" onclick="calculaTroco()">
+
+    <h1>5 - Desafio do Conversor de Medidas</h1>
+    <input type="button" value="Converter" class="botao" onclick="converteMed()">
+    <div id="infoMed">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+
+    <h1>6 - Desafio do Conversor de Temperaturas</h1>
+    <input type="button" value="Converter" class="botao" onclick="converteTemp()">
+    <div id="infoTemp">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+
+    <h1>7 - Desafio do Conversor de Moedas (R$ ➝ US$)</h1>
+    <input type="button" value="Converter" class="botao" onclick="converteMoed()">
+    <div id="infoMoed">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+
+    <h1>8 - Desafio do Desconto</h1>
+    <input type="button" value="Desconto de 10%" class="botao" onclick="calculaDesconto()">
+    <div id="infoDesconto">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+
+    <h1>9 - Desafio do Reajuste Salarial</h1>
+    <input type="button" value="Reajustar Salário" class="botao" onclick="reajustaSal()">
+    <div id="infoSal">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+
+    <h1>10 - Desafio da Bhaskara</h1>
+    <input type="button" value="Calcular" class="botao" onclick="calculaBhaskara()">
+    <div id="infoBhaskara">
+        <p>Considerando uma equação no formato <strong>a</strong>x<sup>2</sup> + <strong>b</strong>x +
+            <strong>c</strong> = 0, aperte o botão acima para calcular o valor de <strong>&Delta;</strong>.
+        </p>
+    </div>
+
+    <h1>11 - Desafio do Ano Bissexto</h1>
+    <input type="button" value="Verificar" class="botao" onclick="verificaAnoBis()">
+    <div id="infoAnoBis">
+        <p>Informe um ano para saber se ele é bissexto ou não.</p>
+    </div>
+
+    <h1>12 - Desafio do Preço</h1>
+    <input type="button" value="Verificar" class="botao" onclick="mudaPreco()">
+    <div id="infoPreco">
+        <p>Clique no botão acima para analisar a mudança de preço.</p>
+    </div>
+
+    <h1>13 - Desafio da Situação do Aluno</h1>
+    <h2>Tabela das notas:</h2>
+    <table>
+        <tr>
+            <td><strong>Média</strong></td>
+            <td><strong>Situação</strong></td>
+        </tr>
+        <tr>
+            <td>Acima de 6.0</td>
+            <td>APROVAÇÃO</td>
+        </tr>
+        <tr>
+            <td>Entre 3.0 e 6.0</td>
+            <td>RECUPERAÇÃO</td>
+        </tr>
+        <tr>
+            <td>Abaixo de 3.0</td>
+            <td>REPROVAÇÃO</td>
+        </tr>
+    </table>
+    <p><input type="button" value="Entrar com as notas" class="botao" onclick="examinaNota()"></p>
+    <div id="infoNota">
+        <p>Clique no botão acima para informar as notas do aluno.</p>
+    </div>
+    <script>
+        function mensagBtn1() {
+            alert("Você clicou no 1º botão!");
+        }
+        function mensagBtn2() {
+            alert("Você clicou no 2º botão!");
+        }
+        function mensagBtn3() {
+            alert("Você clicou no 3º botão!");
+        }
+
+        function identVisitante() {
+            let nome = prompt("Qual é o seu nome?");
+            let idade = prompt(`Olá, ${nome}! Quantos anos você tem?`);
+
+            alert(`Acabei de conhecer ${nome}, que tem ${idade} anos de idade!`);
+        }
+
+
+        function anteSuce() {
+            let n = Number(prompt("Digite um número inteiro qualquer."));
+            let anteN = n - 1;
+            let suceN = n + 1;
+
+            alert(`Antes de ${n}, temos o número ${anteN}.\nDepois de ${n} temos o número ${suceN}.`);
+        }
+
+
+        function calculaTroco() {
+            let produto = prompt("Que produto você está comprando?");
+            let custo = Number(prompt(`Quanto custa ${produto} que você está comprando?`));
+            let valor = Number(prompt(`Qual foi o valor que você deu para pagar ${produto}?`));
+
+            if (valor < custo) {
+                alert(`Desculpe, mas você não possui saldo suficiente para comprar ${produto}.`);
+            } else {
+                let troco = valor - custo;
+                alert(`Você comprou ${produto} que custou R$ ${custo.toFixed(2)}.\nDeu R$ ${valor.toFixed(2)} em dinheiro e vai receber R$ ${troco.toFixed(2)} de troco.\nVolte Sempre!`);
+            }
+        }
+
+
+        function converteMed() {
+            let infoMed = document.querySelector("div#infoMed");
+
+            let m = Number(prompt("Digite um distância em metros (m)."));
+            infoMed.innerHTML = `<h2>A distância de ${m} metros, corresponde a...</h2>`;
+
+            let km = m / 1000;
+            infoMed.innerHTML += `<p>${km} quilômetros (km).</p>`;
+
+            let hm = m / 100;
+            infoMed.innerHTML += `<p>${hm} hectômetros (hm).</p>`;
+
+            let dam = m / 10;
+            infoMed.innerHTML += `<p>${dam} decâmetros (dam).</p>`;
+
+            let dm = m * 10;
+            infoMed.innerHTML += `<p>${dm} decímetros (dm).</p>`;
+
+            let cm = m * 100;
+            infoMed.innerHTML += `<p>${cm} centímetros (cm).</p>`;
+
+            let mm = m * 1000;
+            infoMed.innerHTML += `<p>${mm} milímetros (mm).</p>`;
+        }
+
+
+        function converteTemp() {
+            let infoTemp = document.querySelector("div#infoTemp");
+
+            let c = Number(prompt("Digite uma temperatura em graus Celsius (°C)."));
+            infoTemp.innerHTML = `<h2>A temperatura de ${c}°C, corresponde a...</h2>`;
+
+            let k = c + 273.15;
+            infoTemp.innerHTML += `<p>${k.toFixed(2)}K (Kelvin).</p>`;
+
+            let f = (c * 9 / 5) + 32;
+            infoTemp.innerHTML += `<p>${f.toFixed(2)}°F (Fahrenheit).</p>`;
+        }
+
+
+        function converteMoed() {
+            let infoMoed = document.querySelector("div#infoMoed");
+
+            let cotac = Number(prompt("Antes de mais nada. Quanto está a cotação do dólar agora?"));
+            let rea = Number(prompt("Quantos R$ você tem na carteira?"));
+
+            let dol = rea / cotac;
+            infoMoed.innerHTML = `<p>Com R$ ${rea.toFixed(2)}, você consegue comprar US$ ${dol.toFixed(2)} na cotação atual.</p>`;
+        }
+
+
+        function calculaDesconto() {
+            let infoDesconto = document.querySelector("div#infoDesconto");
+
+            let produto = prompt("Qual é o produto que você está comprando?");
+            let preco = Number(prompt(`Qual é o preço de ${produto}?`));
+            let desconto = preco / 10;
+
+            infoDesconto.innerHTML = `<h2>Calculando desconto de 10% para ${produto}.</h2>`;
+            infoDesconto.innerHTML += `<p>O preço original era ${preco}.</p>`;
+            infoDesconto.innerHTML += `<p>Você acaba de ganhar R$ ${desconto.toFixed(2)} de desconto (-10%).</p>`;
+            infoDesconto.innerHTML += `<p>No fim, você vai pagar R$ ${(preco - desconto).toFixed(2)} no produto ${produto}.`;
+        }
+
+
+        function reajustaSal() {
+            let infoSal = document.querySelector("div#infoSal");
+
+            let funcionario = prompt("Qual é o nome do funcionário?");
+            let sal = Number(prompt(`Qual é o salário de ${funcionario}?`));
+            let porcent = Number(prompt(`O salário de ${funcionario} vai ser reajustado em qual porcentagem?`));
+            let aumento = (sal / 100) * 18;
+
+            infoSal.innerHTML = `<h2>${funcionario} recebeu um aumento salarial!</h2>`;
+            infoSal.innerHTML += `<p>O salário atual era R$ ${sal.toFixed(2)}.</p>`;
+            infoSal.innerHTML += `<p>Com um aumento de ${porcent}%, o salário vai aumentar R$ ${aumento.toFixed(2)} no próximo mês.</p>`;
+            infoSal.innerHTML += `<p>E a partir daí, ${funcionario} vai passar a ganhar R$ ${(sal + aumento).toFixed(2)}.</p>`;
+        }
+
+
+        function calculaBhaskara() {
+            let infoBhaskara = document.querySelector("div#infoBhaskara");
+
+            let a = Number(prompt("Qual é o valor de a?"));
+            let b = Number(prompt("Qual é o valor de b?"));
+            let c = Number(prompt("Qual é o valor de c?"));
+            let delta = Math.pow(b, 2) - 4 * a * c;
+
+            infoBhaskara.innerHTML = "<h2>Resolvendo a Bhaskara:</h2>";
+            infoBhaskara.innerHTML += `<p>A equação atual é <strong>${a}x<sup>2</sup> + ${b}x + ${c} = 0</strong></p>`;
+            infoBhaskara.innerHTML += `<p>O cálculo realizado será <strong>&Delta; = ${b}<sup>2</sup> - 4 . ${a} . ${c}</strong></p>`;
+            infoBhaskara.innerHTML += `<p>O valor calculado foi <strong>&Delta; = ${delta}</strong></p>`;
+        }
+
+
+        function verificaAnoBis() {
+            let infoAnoBis = document.querySelector("div#infoAnoBis");
+            let ano = Number(prompt("Qual é o ano que você quer verificar?"));
+            infoAnoBis.innerHTML = `<h2>Analisando o ano de ${ano}...</h2>`;
+
+            if (isNaN(ano)) {
+                alert("Digite um ano válido!");
+                location.reload();
+            } else if (ano % 4 == 0) {
+                infoAnoBis.innerHTML += `<p>O ano de ${ano} <mark id="MkGreen"><strong>É BISSEXTO</strong></mark>&#x2705;</p>`;
+            } else {
+                infoAnoBis.innerHTML += `<p>O ano de ${ano} <mark id="MkRed"><strong>NÃO É BISSEXTO</strong></mark>&#x274C;</p>`;
+            }
+        }
+
+
+        function mudaPreco() {
+            let infoPreco = document.querySelector("div#infoPreco");
+
+            let precoAnterior = Number(prompt("Qual era o preço anterior do produto?"));
+            let precoAtual = Number(prompt("Qual é o preço atual do produto?"));
+
+            infoPreco.innerHTML = "<h2>Analisando os valores informados:</h2>";
+            infoPreco.innerHTML += `<p>O produto custava R$ ${precoAnterior.toFixed(2)} e agora custa R$ ${precoAtual.toFixed(2)}.</p>`;
+
+            if (precoAnterior < precoAtual) {
+                let aumentoPreco = precoAtual - precoAnterior;
+                let variaCima = (aumentoPreco / precoAnterior) * 100;
+
+                infoPreco.innerHTML += "<p>Hoje o produto está mais caro.</p>";
+                infoPreco.innerHTML += `<p>O preço subiu R$ ${aumentoPreco.toFixed(2)} em relação ao preço anterior.</p>`;
+                infoPreco.innerHTML += `<p>Uma variação de ${variaCima.toFixed(2)}% pra cima.</p>`;
+            } else {
+                let reducaoPreco = precoAnterior - precoAtual;
+                let variaBaixo = (reducaoPreco / precoAtual) * 100;
+
+                infoPreco.innerHTML += "<p>Hoje o produto está mais barato.</p>";
+                infoPreco.innerHTML += `<p>O preço caiu R$ ${reducaoPreco.toFixed(2)} em relação ao preço anterior.</p>`;
+                infoPreco.innerHTML += `<p>Uma variação de ${variaBaixo.toFixed(2)}% pra baixo.</p>`;
+            }
+        }
+
+
+        function examinaNota() {
+            let infoNota = document.querySelector("div#infoNota");
+
+            let nome = prompt("Qual é o nome do aluno?");
+            let nota1 = Number(prompt(`Primeira nota de ${nome}:`));
+            let nota2 = Number(prompt(`Segunda nota de ${nome}:`));
+
+            let media = (nota1 + nota2) / 2;
+            infoNota.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`;
+            infoNota.innerHTML += `<p>Com a primeira nota sendo ${nota1} e a segunda nota sendo ${nota2}, <strong>a média é ${media}</strong></p>`;
+
+            if (media >= 6) {
+                infoNota.innerHTML += `Com a média sendo acima de 6.0, o aluno está <mark id="MkGreen"><strong>APROVADO</strong></mark>`;
+            } else if (media >= 3 && media < 6) {
+                infoNota.innerHTML += `Com a média sendo entre 3.0 e 6.0, o aluno está em <mark><strong>RECUPERAÇÃO</strong></mark>`;
+            } else {
+                infoNota.innerHTML += `Com a média sendo abaixo de 3.0, o aluno está <mark id="MkRed"><strong>REPROVADO</strong></mark>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

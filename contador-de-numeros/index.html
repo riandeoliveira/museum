@@ -1,0 +1,129 @@
+<!-- CORRIGIR ERROS POSSÍVEIS!!!     -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Números</title>
+    <style>
+        body {
+            font-family: cursive;
+            background-color: forestgreen;
+            text-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+            margin: auto;
+            padding: 10px;
+            padding-left: 25px;
+            position: relative;
+            width: 500px;
+        }
+
+        #contar:hover {
+            color: white;
+            cursor: pointer;
+            background-color: forestgreen;
+            border-radius: 5px;
+            font-family: cursive;
+        }
+
+        #link, a {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Contador de Números</h1>
+    </header>
+    <section>
+        <div>
+            <p>
+                <label for="inicio">Primeiro número:</label>
+                <input type="number" name="primeiro" placeholder="ex: 1" id="primeiro">
+            </p>
+            <p>
+                <label for="numF">Último número:</label>
+                <input type="number" name="ultimo" placeholder="ex: 10" id="ultimo">
+            </p>
+            <p>
+                <label for="numPas">Passo entre eles:</label>
+                <input type="number" name="passo" placeholder="ex: 2 (de 2 em 2)" id="passo">
+            </p>
+            <p>
+                <input type="button" value="Iniciar contagem" id="contar" onclick="contar()">
+            </p>
+        </div>
+        <div>
+            <p id="info">Aguardando início da contagem...</p>
+            <p id="resultado"></p>
+        </div>
+    </section>
+    <footer>
+        <p id="link"><a href="https://www.youtube.com/watch?v=bmVKaAV_7-A" target="_blank" rel="external">Ouvir um lofi para codar</a></p>
+    </footer>
+    <script>
+        function contar() {
+            let primeiro = document.getElementById("primeiro");
+            let ultimo = document.getElementById("ultimo");
+            let passo = document.getElementById("passo");
+            let info = document.getElementById("info");
+            let resultado = document.getElementById("resultado");
+
+
+
+            if (primeiro.value.length == 0 || ultimo.value.length == 0 || passo.value.length == 0) {
+                setTimeout(() => {
+                    alert("Dados inválidos ou incompletos! Preencha os campos corretamente.");
+                }, 0);
+                info.innerHTML = "Erro na contagem!";
+                resultado.style.display = "none";
+            } else {
+                resultado.style.display = "block";
+
+                let pri = Number(primeiro.value);
+                let u = Number(ultimo.value);
+                let pa = Number(passo.value);
+
+                if (pa <= 0) {
+                    setTimeout(() => {
+                        alert("Passo inválido! Digite um passo maior que zero.");
+                    }, 0);
+                    info.innerHTML = "Erro na contagem!";
+                    resultado.style.display = "none";
+                } else {
+                    info.innerHTML = "Contagem concluída!";
+                    resultado.style.display = "block";
+                    resultado.innerHTML = "Resultado: <br>";
+
+                    if (pri < u) {
+                        for (let c = pri; c <= u; c += pa) {
+                            resultado.innerHTML += `${c} \u{1F449} `;
+                        }
+                    } else {
+                        for (let c = pri; c >= u; c -= pa) {
+                            resultado.innerHTML += `${c} \u{1F449} `;
+                        }
+                    }
+                    resultado.innerHTML += `\u{1F3C1} `;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

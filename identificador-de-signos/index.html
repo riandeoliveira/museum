@@ -1,0 +1,61 @@
+<!-- Programa que descobre o signo de uma pessoa de acordo com os dados inseridos pelo usuário. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/IS.ico" type="image/x-icon">
+    <title>Identificador de Signos</title>
+</head>
+
+<body>
+    <script>
+        alert("Este programa irá identificar o seu signo, através dos dados inseridos.")
+        var dia = prompt("Digite o seu dia de nascimento (dd).")
+        var mes = prompt("Digite o seu mês de nascimento (mm).")
+        // As condições são um pouco semelhantes com as do 'Cálculo do IMC'.
+        // Para obter resultado, precisei usar os operadores && ('E' lógico) e || ('OU' lógico) juntos em cada condição, separando ela em duas partes com o ||, uma para um mês e a outra para o outro mês.
+        // Se eu usasse && ao invés de ||, a lógica do programa estaria errada, pois seria necessário dois valores para dia e mês ao mesmo tempo. Pegando a condição abaixo como exemplo: em apenas um prompt, o dia precisaria ser 21 e 20 ao mesmo tempo; e o mês 03 e 04, não podendo assim, dar um resultado coerente.
+        if (dia >= 21 && mes == 03 || dia <= 20 && mes == 04) {
+            alert("O seu signo do zodíaco é: ÁRIES")
+        }
+        if (dia >= 21 && mes == 04 || dia <= 20 && mes == 05) {
+            alert("O seu signo do zodíaco é: TOURO")
+        }
+        if (dia >= 21 && mes == 05 || dia <= 20 && mes == 06) {
+            alert("O seu signo do zodíaco é: GÊMEOS")
+        }
+        if (dia >= 21 && mes == 06 || dia <= 21 && mes == 07) {
+            alert("O seu signo do zodíaco é: CÂNCER")
+        }
+        if (dia >= 22 && mes == 07 || dia <= 22 && mes == 08) {
+            alert("O seu signo do zodíaco é: LEÂO")
+        }
+        if (dia >= 23 && mes == 08 || dia <= 21 && mes == 09) {
+            alert("O seu signo do zodíaco é: VIRGEM")
+        }
+        if (dia >= 22 && mes == 09 || dia <= 22 && mes == 10) {
+            alert("O seu signo do zodíaco é: LIBRA")
+        }
+        if (dia >= 23 && mes == 10 || dia <= 21 && mes == 11) {
+            alert("O seu signo do zodíaco é: ESCORPIÃO")
+        }
+        if (dia >= 22 && mes == 11 || dia <= 21 && mes == 12) {
+            alert("O seu signo do zodíaco é: SAGITÁRIO")
+        }
+        if (dia >= 22 && mes == 12 || dia <= 20 && mes == 01) {
+            alert("O seu signo do zodíaco é: CAPRICÓRNIO")
+        }
+        if (dia >= 21 && mes == 01 || dia <= 19 && mes == 02) {
+            alert("O seu signo do zodíaco é: AQUÁRIO")
+        }
+        if (dia >= 20 && mes == 02 || dia <= 20 && mes == 03) {
+            alert("O seu signo do zodíaco é: PEIXES")
+        }
+    </script>
+</body>
+
+</html>

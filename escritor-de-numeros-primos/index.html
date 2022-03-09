@@ -1,0 +1,48 @@
+<!-- Programa que escreve na tela quantos números primos o usuário quiser ver. Em ordem crescente. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/ENP.ico" type="image/x-icon">
+    <title>Escritor de Números Primos</title>
+</head>
+
+<body>
+    <script>
+        var limite = Number(prompt("Digite quantos números primos você quer ver."))
+        var n = 2
+        var contador = 0
+        function primo(n) {
+            for (var divisor = 2; divisor < n; divisor++) {
+                if (n % divisor == 0)
+                    return false
+            }
+            return true
+        }
+        do {
+            if (limite == 1)
+                document.write("O <b> primeiro </b> número primo é: <br><br>")
+            if (limite > 1)
+                document.write("Os <b>" + limite + "</b> primeiros números primos são: <br><br>")
+        } while (contador > 0)
+
+        if (limite > 0) {
+            do {
+                if (primo(n)) {
+                    document.write(n + "\n")
+                    contador++
+                    n++
+                } else n++
+            } while (contador < limite)
+        } else {
+            alert("Digite um número válido!")
+            location.reload()
+        }
+    </script>
+</body>
+
+</html>

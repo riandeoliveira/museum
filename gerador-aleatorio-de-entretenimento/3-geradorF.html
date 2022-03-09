@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/GAE.ico" type="image/x-icon">
+    <title>Gerador de Filmes</title>
+</head>
+<body>
+    <style>
+        body {
+            background-image: url("imagens/inicio/filmes-full.jpg");
+            background-size: 1920px 940px;
+            background-repeat: no-repeat;
+        }
+        .botao {
+            position: absolute; top:80%; left:45.20%;
+            border-radius: 10px 10px 10px 10px;
+            border: 2px solid black;
+            width: 150px;
+            height: 37.5px;
+            font-size: 15pt;
+        }
+    </style>
+        <button class="botao" onclick="aleatorioF()"><b>GERAR</b></button>
+    <script>
+        function aleatorioF() {
+        
+        var filmes = ["(500) Dias com Ela", "12 Anos de Escravidão", "1492 - A Conquista do Paraíso", "1917", "2001: Uma Odisseia no Espaço", "2010: O Ano Em Que Faremos Contato", "2019: O Ano da Extinção", "A Autópsia", "A Cabana", "A Casa do Lago", "Ace Ventura: Um Detetive Diferente", "A Chave Mágica", "A Cinco Passos de Você", "Ad Astra - Rumo às Estrelas", "Adeus, Lenin!", "A Garota no Trem", "A Garota que Conquistou o Tempo", "A Grande Ilusão", "Akira", "A Lagoa Azul", "Alien (Saga)", "Altered Carbon: Nova Capa", "A Máquina do Tempo", "A Menina que Roubava Livros", "Amor Sem Escalas", "A Nação do Medo", "A Noite é Delas", "A Outra Terra", "Apocalypto", "A Possessão de Deborah Logan", "A Queda! As Últimas Horas de Hitler", "As Aventuras de Peabody & Sherman", "A Senha: Swordfish", "A Serbian Film - Terror sem Limites", "As Férias de Mr. Bean", "Assalto em Dose Dupla", "Asterix e Obelix (Filmes)", "Astro Boy", "A Teoria do Caos", "A Vastidão da Noite", "A Viagem de Chihiro", "A Vida é Bela", "A Vila", "A Voz do Silêncio: Koe no Katachi", "Baahubali (Filmes)", "Bakemono no Ko", "Beetlejuice - Os Fantasmas Se Divertem", "Blade Runner (Filmes)", "Blame!", "Bolt - Super Cão", "Brilho Eterno de uma Mente sem Lembranças", "Brinquedo Assassino (Saga)", "Christine, O Carro Assassino", "Cidadão Kane", "Cidade de Deus", "Cinco Centímetros por Segundo", "Clube da Luta", "Coherence", "Construindo uma Carreira", "Coringa", "Curtindo a Vida Adoidado", "Da Colina Kokuriko", "De Olhos Bem Fechados", "De Repente Uma Família", "Deu a Louca em Hollywood", "Deu a Louca na Branca de Neve", "Deu a Louca na Chapéuzinho Vermelho", "Deu a Louca na Cinderela", "Dogão - Amigo pra Cachorro", "Doonie Darko", "Drive", "Durante a Tormenta", "Efeito Borboleta", "Ela", "Ela é Demais", "Elysium", "Em Algum Lugar do Passado", "Em Busca das Estrelas", "Encantada", "Era Uma Vez no Oeste", "Espelhos do Medo (Filmes)", "Feitiço do Tempo", "Filhos da Esperança", "Fogo no Céu", "Footloose - Ritmo Louco", "Galáxia do Terror", "Gantz: O", "Garfield: O Filme", "Garfield 2", "Garota Exemplar", "Garota Infernal", "Gênio Indomável", "Gente Grande (Filmes)", "Ghost in the Shell (Franquia)", "Glória Feita de Sangue", "Harry Potter (Saga)", "Hora do Recreio: O Filme", "Jimmy Neutron (Saga)", "Jogos de Guerra", "Jogos Mortais (Saga)", "John Wick (Trilogia)", "Jojo Rabbit", "Kill Bill (Filmes)", "Kung-Fu Futebol Clube", "Kung-Fusão", "Laranja Mecânica", "Lembranças de Outra Vida", "Loucuras na Idade Média", "Lucas: Um Intruso no Formigueiro", "Mamãe, Virei Um Peixe", "Marte Ataca!", "Mary e Max: Uma Amizade Diferente", "Matilda", "Matrix (Franquia)", "Metrópolis (1927)", "Metrópolis (2001)", "Meu Amigo Totoro", "MIB - Homens de Preto (Saga)", "Minority Report - A Nova Lei", "Monte Python em Busca do Cálice Sagrado", "Nada de Novo no Front", "O Anticristo", "O Cão e a Raposa (Filme)", "O Castelo Animado", "O Conde de Monte Cristo", "O Dia Seguinte", "O Enigma de Kaspar Hauser", "O Enigma do Horizonte", "O Escafandro e a Borboleta", "O Estado das Coisas", "O Expresso Polar", "O Exterminador do Futuro (Saga)", "O Fabuloso Destino de Amélie Poulain", "O Fantasma da Ópera", "O Filho de Deus", "O Físico", "O Gigante de Ferro", "O Incidente", /*"O Jogo da Imitação",*/ "O Lobo de Wall Street", "O Lugar Prometido em Nossa Juventude", "O Novíssimo Testamento", "O Pianista", "O Preço do Amanhã", "O Primeiro Homem", "O Quinto Elemento", "O Reino dos Gatos", "O Segredo dos Animais", "O Senhor das Armas", "Os Estagiários", "O Sexto Sentido", "Os Oito Odiados", "O Som do Trovão", "Os Viajantes do Tempo", "O Universo no Olhar", "O VelociPastor", "País da Violência", "Pânico na Neve", "ParaNorman", "Pequenos Guerreiros", "Pequenos Invasores", "Perfect Blue", "Piratas do Vale do Sílicio", "Planeta 51", "Planeta dos Macacos (Saga)", "Pokémon: Detetive Pikachu", "Ponte para Terabítia", "Predador (Saga)", "Princesa Mononoke", "Psicopata Americano", "Pulp Fiction: Tempo de Violência", "Réquiem para um Sonho", "Robôs", "Rocky (Saga)", "RRRrrrr!!! - Na Idade da Pedra", "Sangue Negro", "Scooby-Doo! e o Rei dos Duendes", "Singham", "Sonic - O Filme", "Spirit: O Corcel Indomável", "Star Wars (Franquia)", "Sunshine - Alerta Solar", "Tom e Jerry: O Filme", "Tom e Jerry: Rumo a Marte", "Tron (Filmes)", "Tropa de Elite (Filmes)", "Truque de Mestre (Filmes)", "Turma da Mônica em Uma Aventura no Tempo", "Uma Cavaleira em Camelot", "Uma História de Amor e Fúria", "Uma Lição de Amor", "Um Dia de Fúria", "Um Lugar Silencioso (Filmes)", "Um Sonho de Liberdade", "Up: Altas Aventuras", "Valerian e a Cidade dos Mil Planetas", "Vanilla Sky", "Velozes e Furiosos (Saga)", "Vidas ao Vento", "WIFI Ralph: Quebrando a Internet"]
+        
+        var sorteio = Math.floor(Math.random()*199);
+        var resultado = `${filmes[sorteio]}`;
+
+        if (resultado === "(500) Dias com Ela") {
+            window.location.href="F-5DcE.html"
+        }
+        if (resultado === "12 Anos de Escravidão") {
+            window.location.href="F-1AdE.html"
+        }
+        if (resultado === "1492 - A Conquista do Paraíso") {
+            window.location.href="F-1ACdP.html"
+        }
+        if (resultado === "1917") {
+            window.location.href="F-1.html"
+        }
+        if (resultado === "2001: Uma Odisseia no Espaço") {
+            window.location.href="F-2UOnE.html"
+        }
+        if (resultado === "2010: O Ano Em Que Faremos Contato") {
+            window.location.href="F-2OAEQFC.html"
+        }
+        if (resultado === "2019: O Ano da Extinção") {
+            window.location.href="F-2OAdE.html"
+        }
+        if (resultado === "A Autópsia") {
+            window.location.href="F-AA.html"
+        }
+        if (resultado === "A Cabana") {
+            window.location.href="F-AC.html"
+        }
+        if (resultado === "A Casa do Lago") {
+            window.location.href="F-ACdL.html"
+        }
+        if (resultado === "Ace Ventura: Um Detetive Diferente") {
+            window.location.href="F-AVUDD.html"
+        }
+        if (resultado === "A Chave Mágica") {
+            window.location.href="F-ACM.html"
+        }
+        if (resultado === "A Cinco Passos de Você") {
+            window.location.href="F-ACPdV.html"
+        }
+        if (resultado === "Ad Astra - Rumo às Estrelas") {
+            window.location.href="F-AARàE.html"
+        }
+        if (resultado === "Adeus, Lenin!") {
+            window.location.href="F-AL.html"
+        }
+        if (resultado === "A Garota no Trem") {
+            window.location.href="F-AGnT.html"
+        }
+        if (resultado === "A Garota que Conquistou o Tempo") {
+            window.location.href="F-AGqCoT.html"
+        }
+        if (resultado === "A Grande Ilusão") {
+            window.location.href="F-AGI.html"
+        }
+        if (resultado === "Akira") {
+            window.location.href="F-A.html"
+        }
+        if (resultado === "A Lagoa Azul") {
+            window.location.href="F-ALA.html"
+        }
+        if (resultado === "Alien (Saga)") {
+            window.location.href="F-AS.html"
+        }
+        if (resultado === "Altered Carbon: Nova Capa") {
+            window.location.href="F-ACNC.html"
+        }
+        if (resultado === "A Máquina do Tempo") {
+            window.location.href="F-AMdT.html"
+        }
+        if (resultado === "A Menina que Roubava Livros") {
+            window.location.href="F-AMqRL.html"
+        }
+        if (resultado === "Amor Sem Escalas") {
+            window.location.href="F-ASE.html"
+        }
+        if (resultado === "A Nação do Medo") {
+            window.location.href="F-ANdM.html"
+        }
+        if (resultado === "A Noite é Delas") {
+            window.location.href="F-ANéD.html"
+        }
+        if (resultado === "A Outra Terra") {
+            window.location.href="F-AOT.html"
+        }
+        if (resultado === "Apocalypto") {
+            window.location.href="F-Ap.html"
+        }
+        if (resultado === "A Possessão de Deborah Logan") {
+            window.location.href="F-APdDL.html"
+        }
+        if (resultado === "A Queda! As Últimas Horas de Hitler") {
+            window.location.href="F-AQAÚHdH.html"
+        }
+        if (resultado === "As Aventuras de Peabody & Sherman") {
+            window.location.href="F-AAdP&S.html"
+        }
+        if (resultado === "A Senha: Swordfish") {
+            window.location.href="F-ASSf.html"
+        }
+        if (resultado === "A Serbian Film - Terror sem Limites") {
+            window.location.href="F-ASFTsL.html"
+        }
+        if (resultado === "As Férias de Mr. Bean") {
+            window.location.href="F-AFdMB.html"
+        }
+        if (resultado === "Assalto em Dose Dupla") {
+            window.location.href="F-AeDD.html"
+        }
+        if (resultado === "Asterix e Obelix (Filmes)") {
+            window.location.href="F-AeOF.html"
+        }
+        if (resultado === "Astro Boy") {
+            window.location.href="F-AB.html"
+        }
+        if (resultado === "A Teoria do Caos") {
+            window.location.href="F-ATdC.html"
+        }
+        if (resultado === "A Vastidão da Noite") {
+            window.location.href="F-AVdN.html"
+        }
+        if (resultado === "A Viagem de Chihiro") {
+            window.location.href="F-AVdC.html"
+        }
+        if (resultado === "A Vida é Bela") {
+            window.location.href="F-AVéB.html"
+        }
+        if (resultado === "A Vila") {
+            window.location.href="F-AV.html"
+        }
+        if (resultado === "A Voz do Silêncio: Koe no Katachi") {
+            window.location.href="F-AVdSKnK.html"
+        }
+        if (resultado === "Baahubali (Filmes)") {
+            window.location.href="F-BF.html"
+        }
+        if (resultado === "Bakemono no Ko") {
+            window.location.href="F-BnK.html"
+        }
+        if (resultado === "Beetlejuice - Os Fantasmas Se Divertem") {
+            window.location.href="F-BOFSD.html"
+        }
+        if (resultado === "Blade Runner (Filmes)") {
+            window.location.href="F-BRF.html"
+        }
+        if (resultado === "Blame!") {
+            window.location.href="F-B.html"
+        }
+        if (resultado === "Bolt - Super Cão") {
+            window.location.href="F-BSC.html"
+        }
+        if (resultado === "Brilho Eterno de uma Mente sem Lembranças") {
+            window.location.href="F-BEduMsL.html"
+        }
+        if (resultado === "Brinquedo Assassino (Saga)") {
+            window.location.href="F-BAS.html"
+        }
+        if (resultado === "Christine, O Carro Assassino") {
+            window.location.href="F-COCA.html"
+        }
+        if (resultado === "Cidadão Kane") {
+            window.location.href="F-CK.html"
+        }
+        if (resultado === "Cidade de Deus") {
+            window.location.href="F-CdD.html"
+        }
+        if (resultado === "Cinco Centímetros por Segundo") {
+            window.location.href="F-CCpS.html"
+        }
+        if (resultado === "Clube da Luta") {
+            window.location.href="F-CdL.html"
+        }
+        if (resultado === "Coherence") {
+            window.location.href="F-C.html"
+        }
+        if (resultado === "Construindo uma Carreira") {
+            window.location.href="F-CuC.html"
+        }
+        if (resultado === "Coringa") {
+            window.location.href="F-Co.html"
+        }
+        if (resultado === "Curtindo a Vida Adoidado") {
+            window.location.href="F-CaVA.html"
+        }
+        if (resultado === "Da Colina Kokuriko") {
+            window.location.href="F-DCK.html"
+        }
+        if (resultado === "De Olhos Bem Fechados") {
+            window.location.href="F-DOBF.html"
+        }
+        if (resultado === "De Repente Uma Família") {
+            window.location.href="F-DRUF.html"
+        }
+        if (resultado === "Deu a Louca em Hollywood") {
+            window.location.href="F-DaLeH.html"
+        }
+        if (resultado === "Deu a Louca na Branca de Neve") {
+            window.location.href="F-DaLnBdN.html"
+        }
+        if (resultado === "Deu a Louca na Chapéuzinho Vermelho") {
+            window.location.href="F-DaLnCV.html"
+        }
+        if (resultado === "Deu a Louca na Cinderela") {
+            window.location.href="F-DaLnC.html"
+        }
+        if (resultado === "Dogão - Amigo pra Cachorro") {
+            window.location.href="F-DApC.html"
+        }
+        if (resultado === "Doonie Darko") {
+            window.location.href="F-DD.html"
+        }
+        if (resultado === "Drive") {
+            window.location.href="F-D.html"
+        }
+        if (resultado === "Durante a Tormenta") {
+            window.location.href="F-DaT.html"
+        }
+        if (resultado === "Efeito Borboleta") {
+            window.location.href="F-EB.html"
+        }
+        if (resultado === "Ela") {
+            window.location.href="F-E.html"
+        }
+        if (resultado === "Ela é Demais") {
+            window.location.href="F-EéD.html"
+        }
+        if (resultado === "Elysium") {
+            window.location.href="F-El.html"
+        }
+        if (resultado === "Em Algum Lugar do Passado") {
+            window.location.href="F-EALdP.html"
+        }
+        if (resultado === "Em Busca das Estrelas") {
+            window.location.href="F-EBdE.html"
+        }
+        if (resultado === "Encantada") {
+            window.location.href="F-En.html"
+        }
+        if (resultado === "Era Uma Vez no Oeste") {
+            window.location.href="F-EUVnO.html"
+        }
+        if (resultado === "Espelhos do Medo (Filmes)") {
+            window.location.href="F-EdMF.html"
+        }
+        if (resultado === "Feitiço do Tempo") {
+            window.location.href="F-FdT.html"
+        }
+        if (resultado === "Filhos da Esperança") {
+            window.location.href="F-FdE.html"
+        }
+        if (resultado === "Fogo no Céu") {
+            window.location.href="F-FnC.html"
+        }
+        if (resultado === "Footloose - Ritmo Louco") {
+            window.location.href="F-FRL.html"
+        }
+        if (resultado === "Galáxia do Terror") {
+            window.location.href="F-GdT.html"
+        }
+        if (resultado === "Gantz: O") {
+            window.location.href="F-GO.html"
+        }
+        if (resultado === "Garfield: O Filme") {
+            window.location.href="F-GOF.html"
+        }
+        if (resultado === "Garfield 2") {
+            window.location.href="F-G2.html"
+        }
+        if (resultado === "Garota Exemplar") {
+            window.location.href="F-GE.html"
+        }
+        if (resultado === "Garota Infernal") {
+            window.location.href="F-GI.html"
+        }
+        if (resultado === "Gênio Indomável") {
+            window.location.href="F-GêI.html"
+        }
+        if (resultado === "Gente Grande (Filmes)") {
+            window.location.href="F-GGF.html"
+        }
+        if (resultado === "Ghost in the Shell (Franquia)") {
+            window.location.href="F-GitSF.html"
+        }
+        if (resultado === "Glória Feita de Sangue") {
+            window.location.href="F-GFdS.html"
+        }
+        if (resultado === "Harry Potter (Saga)") {
+            window.location.href="F-HPS.html"
+        }
+        if (resultado === "Hora do Recreio: O Filme") {
+            window.location.href="F-HdROF.html"
+        }
+        if (resultado === "Jimmy Neutron (Saga)") {
+            window.location.href="F-JNS.html"
+        }
+        if (resultado === "Jogos de Guerra") {
+            window.location.href="F-JdG.html"
+        }
+        if (resultado === "Jogos Mortais (Saga)") {
+            window.location.href="F-JMS.html"
+        }
+        if (resultado === "John Wick (Trilogia)") {
+            window.location.href="F-JWT.html"
+        }
+        if (resultado === "Jojo Rabbit") {
+            window.location.href="F-JR.html"
+        }
+        if (resultado === "Kill Bill (Filmes)") {
+            window.location.href="F-KBF.html"
+        }
+        if (resultado === "Kung-Fu Futebol Clube") {
+            window.location.href="F-KFFC.html"
+        }
+        if (resultado === "Kung-Fusão") {
+            window.location.href="F-KF.html"
+        }
+        if (resultado === "Laranja Mecânica") {
+            window.location.href="F-LM.html"
+        }
+        if (resultado === "Lembranças de Outra Vida") {
+            window.location.href="F-LdOV.html"
+        }
+        if (resultado === "Loucuras na Idade Média") {
+            window.location.href="F-LnIM.html"
+        }
+        if (resultado === "Lucas: Um Intruso no Formigueiro") {
+            window.location.href="F-LUInF.html"
+        }
+        if (resultado === "Mamãe, Virei Um Peixe") {
+            window.location.href="F-MVUP.html"
+        }
+        if (resultado === "Marte Ataca!") {
+            window.location.href="F-MA.html"
+        }
+        if (resultado === "Mary e Max: Uma Amizade Diferente") {
+            window.location.href="F-MeMUAD.html"
+        }
+        if (resultado === "Matilda") {
+            window.location.href="F-M.html"
+        }
+        if (resultado === "Matrix (Franquia)") {
+            window.location.href="F-MF.html"
+        }
+        if (resultado === "Metrópolis (1927)") {
+            window.location.href="F-M1.html"
+        }
+        if (resultado === "Metrópolis (2001)") {
+            window.location.href="F-M2.html"
+        }
+        if (resultado === "Meu Amigo Totoro") {
+            window.location.href="F-MAT.html"
+        }
+        if (resultado === "MIB - Homens de Preto (Saga)") {
+            window.location.href="F-MHdPS.html"
+        }
+        if (resultado === "Minority Report - A Nova Lei") {
+            window.location.href="F-MRANL.html"
+        }
+        if (resultado === "Monte Python em Busca do Cálice Sagrado") {
+            window.location.href="F-MPeBdCS.html"
+        }
+        if (resultado === "Nada de Novo no Front") {
+            window.location.href="F-NdNnF.html"
+        }
+        if (resultado === "O Anticristo") {
+            window.location.href="F-OAc.html"
+        }
+        if (resultado === "O Cão e a Raposa (Filmes)") {
+            window.location.href="F-OCeaRF.html"
+        }
+        if (resultado === "O Castelo Animado") {
+            window.location.href="F-OCA.html"
+        }
+        if (resultado === "O Conde de Monte Cristo") {
+            window.location.href="F-OCdMC.html"
+        }
+        if (resultado === "O Dia Seguinte") {
+            window.location.href="F-ODS.html"
+        }
+        if (resultado === "O Enigma de Kaspar Hauser") {
+            window.location.href="F-OEdKH.html"
+        }
+        if (resultado === "O Enigma do Horizonte") {
+            window.location.href="F-OEdH.html"
+        }
+        if (resultado === "O Escafandro e a Borboleta") {
+            window.location.href="F-OEeaB.html"
+        }
+        if (resultado === "O Estado das Coisas") {
+            window.location.href="F-OEdC.html"
+        }
+        if (resultado === "O Expresso Polar") {
+            window.location.href="F-OEP.html"
+        }
+        if (resultado === "O Exterminador do Futuro (Saga)") {
+            window.location.href="F-OEdFS.html"
+        }
+        if (resultado === "O Fabuloso Destino de Amélie Poulain") {
+            window.location.href="F-OFDdAP.html"
+        }
+        if (resultado === "O Fantasma da Ópera") {
+            window.location.href="F-OFdO.html"
+        }
+        if (resultado === "O Filho de Deus") {
+            window.location.href="F-OFdD.html"
+        }
+        if (resultado === "O Físico") {
+            window.location.href="F-OF.html"
+        }
+        if (resultado === "O Gigante de Ferro") {
+            window.location.href="F-OGdF.html"
+        }
+        if (resultado === "O Incidente") {
+            window.location.href="F-OI.html"
+        }
+        /*if (resultado === "O Jogo da Imitação") {
+            window.location.href="F-OJdI.html"
+        }*/
+        if (resultado === "O Lobo de Wall Street") {
+            window.location.href="F-OLdWS.html"
+        }
+        if (resultado === "O Lugar Prometido em Nossa Juventude") {
+            window.location.href="F-OLPeNJ.html"
+        }
+        if (resultado === "O Novíssimo Testamento") {
+            window.location.href="F-ONT.html"
+        }
+        if (resultado === "O Pianista") {
+            window.location.href="F-OP.html"
+        }
+        if (resultado === "O Preço do Amanhã") {
+            window.location.href="F-OPdA.html"
+        }
+        if (resultado === "O Primeiro Homem") {
+            window.location.href="F-OPH.html"
+        }
+        if (resultado === "O Quinto Elemento") {
+            window.location.href="F-OQE.html"
+        }
+        if (resultado === "O Reino dos Gatos") {
+            window.location.href="F-ORdG.html"
+        }
+        if (resultado === "O Segredo dos Animais") {
+            window.location.href="F-OSdA.html"
+        }
+        if (resultado === "O Senhor das Armas") {
+            window.location.href="F-OSedA.html"
+        }
+        if (resultado === "Os Estagiários") {
+            window.location.href="F-OE.html"
+        }
+        if (resultado === "O Sexto Sentido") {
+            window.location.href="F-OSS.html"
+        }
+        if (resultado === "Os Oito Odiados") {
+            window.location.href="F-OOO.html"
+        }
+        if (resultado === "O Som do Trovão") {
+            window.location.href="F-OSdT.html"
+        }
+        if (resultado === "Os Viajantes do Tempo") {
+            window.location.href="F-OVdT.html"
+        }
+        if (resultado === "O Universo no Olhar") {
+            window.location.href="F-OUnO.html"
+        }
+        if (resultado === "O VelociPastor") {
+            window.location.href="F-OVP.html"
+        }
+        if (resultado === "País da Violência") {
+            window.location.href="F-PdV.html"
+        }
+        if (resultado === "Pânico na Neve") {
+            window.location.href="F-PnN.html"
+        }
+        if (resultado === "ParaNorman") {
+            window.location.href="F-PN.html"
+        }
+        if (resultado === "Pequenos Guerreiros") {
+            window.location.href="F-PG.html"
+        }
+        if (resultado === "Pequenos Invasores") {
+            window.location.href="F-PI.html"
+        }
+        if (resultado === "Perfect Blue") {
+            window.location.href="F-PB.html"
+        }
+        if (resultado === "Piratas do Vale do Sílicio") {
+            window.location.href="F-PdVdS.html"
+        }
+        if (resultado === "Planeta 51") {
+            window.location.href="F-P5.html"
+        }
+        if (resultado === "Planeta dos Macacos (Saga)") {
+            window.location.href="F-PdMS.html"
+        }
+        if (resultado === "Pokémon: Detetive Pìkachu") {
+            window.location.href="F-PDP.html"
+        }
+        if (resultado === "Ponte para Terabítia") {
+            window.location.href="F-PpT.html"
+        }
+        if (resultado === "Predador (Saga)") {
+            window.location.href="F-PS.html"
+        }
+        if (resultado === "Princesa Mononoke") {
+            window.location.href="F-PM.html"
+        }
+        if (resultado === "Psicopata Americano") {
+            window.location.href="F-PA.html"
+        }
+        if (resultado === "Pulp Fiction: Tempo de Violência") {
+            window.location.href="F-PFTdV.html"
+        }
+        if (resultado === "Réquiem para um Sonho") {
+            window.location.href="F-RpuS.html"
+        }
+        if (resultado === "Robôs") {
+            window.location.href="F-R.html"
+        }
+        if (resultado === "Rocky (Saga)") {
+            window.location.href="F-RS.html"
+        }
+        if (resultado === "RRRrrrr!!! - Na Idade da Pedra") {
+            window.location.href="F-RNIdP.html"
+        }
+        if (resultado === "Sangue Negro") {
+            window.location.href="F-SN.html"
+        }
+        if (resultado === "Scooby-Doo! e o Rei dos Duendes") {
+            window.location.href="F-SDeoRdD.html"
+        }
+        if (resultado === "Singham") {
+            window.location.href="F-S.html"
+        }
+        if (resultado === "Sonic - O Filme") {
+            window.location.href="F-SOF.html"
+        }
+        if (resultado === "Spirit: O Corcel Indomável") {
+            window.location.href="F-SOCI.html"
+        }
+        if (resultado === "Star Wars (Franquia)") {
+            window.location.href="F-SWF.html"
+        }
+        if (resultado === "Sunshine - Alerta Solar") {
+            window.location.href="F-SAS.html"
+        }
+        if (resultado === "Tom e Jerry: O Filme") {
+            window.location.href="F-TeJOF.html"
+        }
+        if (resultado === "Tom e Jerry: Rumo a Marte") {
+            window.location.href="F-TeJRaM.html"
+        }
+        if (resultado === "Tron (Filmes)") {
+            window.location.href="F-TF.html"
+        }
+        if (resultado === "Tropa de Elite (Filmes)") {
+            window.location.href="F-TdEF.html"
+        }
+        if (resultado === "Truque de Mestre (Filmes)") {
+            window.location.href="F-TdMF.html"
+        }
+        if (resultado === "Turma da Mônica em Uma Aventura no Tempo") {
+            window.location.href="F-TdMeUAnT.html"
+        }
+        if (resultado === "Uma Cavaleira em Camelot") {
+            window.location.href="F-UCeC.html"
+        }
+        if (resultado === "Uma História de Amor e Fúria") {
+            window.location.href="F-UHdAeF.html"
+        }
+        if (resultado === "Uma Lição de Amor") {
+            window.location.href="F-ULdA.html"
+        }
+        if (resultado === "Um Dia de Fúria") {
+            window.location.href="F-UDdF.html"
+        }
+        if (resultado === "Um Lugar Silencioso (Filmes)") {
+            window.location.href="F-ULSF.html"
+        }
+        if (resultado === "Um Sonho de Liberdade") {
+            window.location.href="F-USdL.html"
+        }
+        if (resultado === "Up: Altas Aventuras") {
+            window.location.href="F-UAA.html"
+        }
+        if (resultado === "Valerian e a Cidade dos Mil Planetas") {
+            window.location.href="F-VeaCdMP.html"
+        }
+        if (resultado === "Vanilla Sky") {
+            window.location.href="F-VS.html"
+        }
+        if (resultado === "Velozes e Furiosos (Saga)") {
+            window.location.href="F-VeFS.html"
+        }
+        if (resultado === "Vidas ao Vento") {
+            window.location.href="F-VaV.html"
+        }
+        if (resultado === "WIFI Ralph: Quebrando a Internet") {
+            window.location.href="F-WRQaI.html"
+        }
+    }
+    </script>
+</body>
+</html>

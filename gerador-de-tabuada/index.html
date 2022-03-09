@@ -1,0 +1,103 @@
+<!-- CORRIGIR ERROS POSSÍVEIS!!!     -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Tabuada</title>
+    <style>
+        body {
+            font-family: cursive;
+            background-color: violet;
+            text-align: center;
+            text-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+            margin: auto;
+            padding: 10px;
+            padding-left: 25px;
+            position: relative;
+            width: 500px;
+        }
+
+        #botao:hover {
+            background-color: violet;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-family: cursive;
+        }
+
+        select {
+            display: none;
+            margin: auto;
+        }
+
+        #link,
+        a {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Gerador de Tabuada</h1>
+    </header>
+    <section>
+        <div>
+            <p>
+                <label for="num">Número:</label>
+                <input type="number" name="numero" id="numero">
+                <input type="button" value="Gerar tabuada" id="botao" onclick="tabuada()">
+            </p>
+        </div>
+        <div>
+            <p id="descricao">Digite um número acima para ver a tabuada dele!</p>
+            <p>
+                <select name="tabuada" id="tabuada" size="10"></select>
+            </p>
+        </div>
+    </section>
+    <footer>
+        <p id="link"><a href="https://www.youtube.com/watch?v=bmVKaAV_7-A" target="_blank" rel="external">Ouvir um lofi
+                para
+                codar</a></p>
+    </footer>
+    <script>
+        function tabuada() {
+            let numero = document.getElementById("numero");
+            if (numero.value.length == 0) {
+                alert("Digite um número válido!");
+            } else {
+                let num = Number(numero.value);
+                let tabuada = document.getElementById("tabuada");
+                tabuada.innerHTML = "";
+                document.getElementById("descricao").innerHTML = `Tabuada do ${num}`
+                tabuada.style.display = "block";
+                for (let c = 1; c <= 10; c++) {
+                    let res = num * c;
+                    let linha = document.createElement("option");
+                    linha.innerHTML = `${num} x ${c} = ${res}`;
+                    linha.value = `${c}`
+                    tabuada.appendChild(linha);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

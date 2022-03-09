@@ -1,0 +1,1 @@
+Conversor de temperaturas básico, para Graus Celsius (°C), Fahrenheit (°F) e Kelvin (K).

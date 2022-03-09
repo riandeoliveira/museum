@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperaturas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        :root {
+            --cor-fahrenheit: #9A11CB;
+            --cor-celsius: #7272FF;
+            --cor-kelvin: #04A338;
+        }
+
+        body {
+            background-image: linear-gradient(90deg, var(--cor-fahrenheit), var(--cor-celsius), var(--cor-kelvin));
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+        
+        .principal {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.521);
+            margin: auto;
+            padding: 1px;
+            width: 550px;
+        }
+
+        img {
+            margin-bottom: 16px;
+        }
+
+        div {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button:hover {
+            color: white;
+        }
+
+        .botaoFC:hover {
+            background-image: linear-gradient(90deg, var(--cor-fahrenheit), var(--cor-celsius));
+        }
+
+        .botaoFK:hover {
+            background-image: linear-gradient(90deg, var(--cor-fahrenheit), var(--cor-kelvin));
+        }
+
+        .botaoCF:hover {
+            background-image: linear-gradient(90deg, var(--cor-celsius), var(--cor-fahrenheit));
+        }
+
+        .botaoCK:hover {
+            background-image: linear-gradient(90deg, var(--cor-celsius), var(--cor-kelvin));
+        }
+
+        .botaoKC:hover {
+            background-image: linear-gradient(90deg, var(--cor-kelvin), var(--cor-celsius));
+        }
+
+        .botaoKF:hover {
+            background-image: linear-gradient(90deg, var(--cor-kelvin), var(--cor-fahrenheit));
+        }
+
+        span {
+            border-radius: 5px;
+            color: white;
+            padding: 5px;
+        }
+
+        .corFundoFahrenheit {
+            background-color: var(--cor-fahrenheit);
+        }
+
+        .corFundoCelsius {
+            background-color: var(--cor-celsius);
+        }
+
+        .corFundoKelvin {
+            background-color: var(--cor-kelvin);
+        }
+
+        .corFahrenheit {
+            color: var(--cor-fahrenheit);;
+        }
+
+        .corCelsius {
+            color: var(--cor-celsius);;
+        }
+
+        .corKelvin {
+            color: var(--cor-kelvin);;
+        }
+    </style>
+</head>
+<body>
+    <div class="principal">
+        <h1>Conversor de Temperaturas</h1>
+        <p>Converta temperaturas entre graus fahrenheit, graus celsius e kelvin!</p>
+        <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo/escalas%20de%20temperatura.jpg" alt="Comparação entre graus fahrenheit, graus celsius e kelvin">
+        <div>
+            <label for="fahrenheitParaCelsius"><span class="corFahrenheit">Fahrenheit</span> para <span class="corCelsius">Celsius</span> (°F → °C):</label>
+            <input type="number" id="fahrenheitCelsius">
+            <button class="botaoFC" onclick="converteFC()">Calcular</button>
+        </div>
+        <div>
+            <label for="fahrenheitParaKelvin"><span class="corFahrenheit">Fahrenheit</span> para <span class="corKelvin">Kelvin</span> (°F → K):</label>
+            <input type="number" id="fahrenheitKelvin">
+            <button class="botaoFK" onclick="converteFK()">Calcular</button>
+        </div>
+        <div>
+            <label for="celsiusParaFahrenheit"><span class="corCelsius">Celsius</span> para <span class="corFahrenheit">Fahrenheit</span> (°C → °F):</label>
+            <input type="number" id="celsiusFahrenheit">
+            <button class="botaoCF" onclick="converteCF()">Calcular</button>
+        </div>
+        <div>
+            <label for="celsiusParaKelvin"><span class="corCelsius">Celsius</span> para <span class="corKelvin">Kelvin</span> (°C → K):</label>
+            <input type="number" id="celsiusKelvin">
+            <button class="botaoCK" onclick="converteCK()">Calcular</button>
+        </div>
+        <div>
+            <label for="kelvinParaCelsius"><span class="corKelvin">Kelvin</span> para <span class="corCelsius">Celsius</span> (K → °C):</label>
+            <input type="number" id="kelvinCelsius">
+            <button class="botaoKC" onclick="converteKC()">Calcular</button>
+        </div>
+        <div>
+            <label for="kelvinParaFahrenheit"><span class="corKelvin">Kelvin</span> para <span class="corFahrenheit">Fahrenheit</span> (K → °F):</label>
+            <input type="number" id="kelvinFahrenheit">
+            <button class="botaoKF" onclick="converteKF()">Calcular</button>
+        </div>
+        <p id="resultado"></p>
+    </div>
+    <script>
+        const fahrenheitCelsius = document.querySelector("input#fahrenheitCelsius");
+        const fahrenheitKelvin = document.querySelector("input#fahrenheitKelvin");
+        
+        const celsiusFahrenheit = document.querySelector("input#celsiusFahrenheit");
+        const celsiusKelvin = document.querySelector("input#celsiusKelvin");
+
+        const kelvinCelsius = document.querySelector("input#kelvinCelsius");
+        const kelvinFahrenheit = document.querySelector("input#kelvinFahrenheit");
+
+        const resultado = document.querySelector("p#resultado");
+
+        const converteFC = () => {
+            if (fahrenheitCelsius.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number(fahrenheitCelsius.value - 32) * 5/9;
+                resultado.innerHTML = `<span class="corFundoFahrenheit";>${fahrenheitCelsius.value}°F</span> equivale a <span class="corFundoCelsius";>${calculo}°C</span>`;
+            }
+        }
+        
+        const converteFK = () => {
+            if (fahrenheitKelvin.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number(fahrenheitKelvin.value - 32) * 5/9 + 273.15;
+                resultado.innerHTML = `<span class="corFundoFahrenheit";>${fahrenheitKelvin.value}°F</span> equivale a <span class="corFundoKelvin";>${calculo}K</span>`;
+            }
+        }
+
+        const converteCF = () => {
+            if (celsiusFahrenheit.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number((celsiusFahrenheit.value) * 9/5) + 32;
+                resultado.innerHTML = `<span class="corFundoCelsius";>${celsiusFahrenheit.value}°C</span> equivale a <span class="corFundoFahrenheit";>${calculo}°F</span>`;
+            }
+        }
+        
+        const converteCK = () => {
+            if (celsiusKelvin.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number(celsiusKelvin.value) + 273.15;
+                resultado.innerHTML = `<span class="corFundoCelsius";>${celsiusKelvin.value}°C</span> equivale a <span class="corFundoKelvin";>${calculo}K</span>`;
+            }
+        }
+
+        const converteKC = () => {
+            if (kelvinCelsius.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number(kelvinCelsius.value - 273.15);
+                resultado.innerHTML = `<span class="corFundoKelvin";>${kelvinCelsius.value}K</span> equivale a <span class="corFundoCelsius";>${calculo}°C</span>`;
+            }
+        }
+
+        const converteKF = () => {
+            if (kelvinFahrenheit.value == "") {
+                alert("Temperatura inválida! Tente novamente.");
+            } else {
+                const calculo = Number(kelvinFahrenheit.value - 273.15) * 9/5 + 32;
+                resultado.innerHTML = `<span class="corFundoKelvin";>${kelvinFahrenheit.value}K</span> equivale a <span class="corFundoFahrenheit";>${calculo}°F</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

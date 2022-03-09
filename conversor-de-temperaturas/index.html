@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/CT.ico" type="image/x-icon">
+    <title>Conversor de Temperaturas</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/script.js"></script>
+</head>
+
+<body>
+    <h1>Conversor de Temperaturas</h1>
+    <form id="form">
+        <select id="opcoes" title="Escolha uma conversão dentre as opções disponíveis">
+            <option id="opcao" value="" title="Escolha uma conversão desejada">Escolha uma conversão</option>
+            <option id="opcao1" value="1" title="Graus Celsius para Graus Fahrenheit">Celsius (°C) → Fahrenheit (°F)
+            </option>
+            <option id="opcao2" value="2" title="Graus Celsius para Kelvin">Celsius (°C) → Kelvin (K)</option>
+            <option id="opcao3" value="3" title="Graus Fahrenheit para Graus Celsius">Fahrenheit (°F) → Celsius (°C)
+            </option>
+            <option id="opcao4" value="4" title="Graus Fahrenheit para Kelvin">Fahrenheit (°F) → Kelvin (K)</option>
+            <option id="opcao5" value="5" title="Kelvin para Graus Celsius">Kelvin (K) → Celsius (°C)</option>
+            <option id="opcao6" value="6" title="Kelvin para Graus Fahrenheit">Kelvin (K) → Fahrenheit (°F)</option>
+        </select>
+        <input id="valor" type="text" autocomplete="off" title="Digite um valor">
+        <i>=</i>
+        <input id="resultado" title="O valor convertido será mostrado aqui" disabled>
+        <input id="conversor" type="button" value="Converter" title="Converta seu valor" onclick="conversao()" />
+        <input id="apagador" type="reset" value="Resetar" title="Resete os valores e resultados" />
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        body {
+            background-image: linear-gradient(90deg, #1AEFFF, #16A7F8, #1979F4, #194FF0);
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+
+        .principal {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 6px 7px 5px #00000081;
+            margin: auto;
+            padding: 1px;
+            width: 500px;
+        }
+
+        img {
+            padding: 0px 0px 15px;
+        }
+
+        input {
+            width: 60px;
+        }
+
+        .containers {
+            padding: 0px 0px 5px;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px;
+            margin: 10px;
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: #1979F4;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="principal">
+        <h1>Calculadora de Média</h1>
+        <p>Descubra a média da nota de todas suas provas!</p>
+        <img src="https://static-s.aa-cdn.net/img/ios/384411431/fc45ad03bba663d916fb33eb741a42b5?v=1">
+        <div class="containers">
+            <label for="bimestre1">Nota do primeiro bimestre:</label>
+            <input type="number" id="primeiroBimestre">
+        </div>
+        <div class="containers">
+            <label for="bimestre2">Nota do segundo bimestre:</label>
+            <input type="number" id="segundoBimestre">
+        </div>
+        <div class="containers">
+            <label for="bimestre3">Nota do terceiro bimestre:</label>
+            <input type="number" id="terceiroBimestre">
+        </div>
+        <div class="containers">
+            <label for="bimestre4">Nota do quarto bimestre:</label>
+            <input type="number" id="quartoBimestre">
+        </div>
+        <button onclick="verificaNotas()">Calcular</button>
+        <p id="mediaResultado"></p>
+        <p id="resultado"></p>
+    </div>
+    <script>
+        const primeiroBimestre = document.querySelector("input#primeiroBimestre");
+        const segundoBimestre = document.querySelector("input#segundoBimestre");
+        const terceiroBimestre = document.querySelector("input#terceiroBimestre");
+        const quartoBimestre = document.querySelector("input#quartoBimestre");
+        const mediaResultado = document.querySelector("p#mediaResultado");
+        const resultado = document.querySelector("p#resultado");
+
+        const verificaNotas = () => {
+            if (primeiroBimestre.value < 1 || segundoBimestre.value < 1 || terceiroBimestre.value < 1 || quartoBimestre.value < 1) {
+                resultado.innerHTML = `<span style="background-color: yellow; border-radius: 5px; font-weight: bold; padding: 5px;">Notas inválidas!</span> Tente novamente`;
+            } else calculaNotas();
+        }
+
+        const calculaNotas = () => {
+            let soma = Number(primeiroBimestre.value) + Number(segundoBimestre.value) + Number(terceiroBimestre.value) + Number(quartoBimestre.value);
+            let media = soma / 4;
+            if (media >= 6) {
+                const estiloVerde = `<span style="background-color: green; border-radius: 5px; font-weight: bold; padding: 5px;">`;
+                mediaResultado.innerHTML = `Sua média é de ${estiloVerde}` + `${media}</span> pontos`;
+                resultado.innerHTML = `Parabéns, você foi ${estiloVerde}APROVADO!</span>`;
+            } else {
+                const estiloVermelho = `<span style="background-color: red; border-radius: 5px; font-weight: bold; padding: 5px;">`;
+                mediaResultado.innerHTML = `Sua média é de ${estiloVermelho}` + `${media}</span> pontos`;
+                resultado.innerHTML = `Sinto muito, mas você foi ${estiloVermelho}REPROVADO!</span>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

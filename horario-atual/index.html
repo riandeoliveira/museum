@@ -1,0 +1,127 @@
+<!-- Modelo de site simples que se atualiza de acordo com o horário local. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário Atual</title>
+    <style>
+        video {
+            bottom: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+        }
+
+        body {
+            font-family: cursive;
+            text-align: center;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.500);
+        }
+
+        header, a {
+            color: white;
+            position: relative;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.500);
+            margin: auto;
+            padding: 10px;
+            position: relative;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="video" src="" autoplay loop></video>
+    <header>
+        <h1 id="titulo"></h1>
+    </header>
+    <section>
+        <div id="horario"></div>
+    </section>
+    <footer>
+        <p><a href="https://www.youtube.com/watch?v=bmVKaAV_7-A" rel="external" target="_blank">Ouvir um lofi para codar</a></p>
+    </footer>
+    <script>
+        // Uso do DOM, para pegar os elementos necessários.
+        var video = document.getElementById("video")
+        var titulo = document.getElementById("titulo")
+        var horario = document.getElementById("horario")
+        var imagem = document.getElementById("imagem")
+
+        // Declarações para usar valores de data.
+        var data = new Date()
+        var horas = data.getHours()
+        var minutos = data.getMinutes()
+
+        // Condições aninhadas que chamam outras funções e que exibem um vídeo de fundo correspondente ao horário.
+        if (horas == 0) {
+            titulo.innerHTML = "Boa Noite!"
+            horarioAtualSingular()
+            video.src = "midia/noite2.mp4"
+        } else if (horas == 1) {
+            titulo.innerHTML = "Bom Dia!"
+            horarioAtualSingular()
+            video.src = "midia/dia.mp4"
+        } else if (horas < 12) {
+            titulo.innerHTML = "Bom Dia!"
+            horarioAtualPlural()
+            video.src = "midia/dia2.mp4"
+        } else if (horas == 12) {
+            titulo.innerHTML = "Boa Tarde!"
+            horarioAtualPlural()
+            video.src = "midia/tarde.mp4"
+        } else if (horas > 12 && horas < 19) {
+            titulo.innerHTML = "Boa Tarde!"
+            horarioAtualPlural()
+            video.src = "midia/tarde2.mp4"
+        } else if (horas >= 19 && horas <= 23) {
+            titulo.innerHTML = "Boa Noite!"
+            horarioAtualPlural()
+            video.src = "midia/noite.mp4"
+        }
+
+        // Função responsável por sempre atualizar o horário e o exibir no singular.
+        function horarioAtualSingular() {
+            setInterval(() => {
+                var data = new Date()
+                var horas = data.getHours()
+                var minutos = data.getMinutes()
+                if (horas < 10) {
+                    var horas = "0" + data.getHours()
+                }
+                if (minutos < 10) {
+                    var minutos = "0" + data.getMinutes()
+                }
+                horario.innerHTML = `É ${horas}h${minutos}min`
+            }, 0);
+        }
+
+        // Função que atualiza o horário e o exibe no plural.
+        function horarioAtualPlural() {
+            setInterval(() => {
+                var data = new Date()
+                var horas = data.getHours()
+                var minutos = data.getMinutes()
+                if (horas < 10) {
+                    var horas = "0" + data.getHours()
+                }
+                if (minutos < 10) {
+                    var minutos = "0" + data.getMinutes()
+                }
+                horario.innerHTML = `São ${horas}h${minutos}min`
+            }, 0);
+        }
+    </script>
+</body>
+
+</html>

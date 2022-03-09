@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        body {
+            background-image: linear-gradient(90deg, #0BC675, #0072BC, #FFAB41, #E13878);
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+
+        .principal {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.493);
+            margin: auto;
+            padding: 1px;
+            width: 700px;
+        }
+
+        h1 {
+            margin: 10px 0px 10px 0px;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            margin: auto;
+        }
+
+        td, th {
+            padding: 5px;
+        }
+
+        .area-opcoes {
+            margin: 16px 0px 0px 0px;
+        }
+
+        input {
+            padding: 3px 6px;
+            width: 100px;
+        }
+
+        select, button {
+            cursor: pointer;
+            padding: 3px 6px;
+        }
+
+        #infoResultado {
+            display: none;
+        }
+
+      #resultado {
+          margin-bottom: 16px
+      }
+    </style>
+</head>
+<body>
+    <div class="principal">
+        <h1>Conversor de Moedas</h1>
+        <p>Converta diversos valores monetários!</p>
+        <img src="https://www.codester.com/static/uploads/items/000/012/12183/icon.png" alt="Símbolos de moedas de alguns países">
+        <div>
+            <h2>Tabela de Informações</h2>
+            <table>
+                <tr>
+                    <th>Informações</th>
+                    <th>Bitcoin</th>
+                    <th>Dólar</th>
+                    <th>Euro</th>
+                    <th>Iene</th>
+                    <th>Libra Esterlina</th>
+                    <th>Real</th>
+                </tr>
+                <tr>
+                    <th>Código ISO 4217</th>
+                    <td>BTC</td>
+                    <td>USD</td>
+                    <td>EUR</td>
+                    <td>JPY</td>
+                    <td>GBP</td>
+                    <td>BRL</td>
+                </tr>
+                <tr>
+                    <th>Usado em</th>
+                    <td>Internet</td>
+                    <td>Estados Unidos</td>
+                    <td>Zona do Euro</td>
+                    <td>Japão</td>
+                    <td>Reino Unido</td>
+                    <td>Brasil</td>
+                </tr>
+                <tr>
+                    <th>Símbolo</th>
+                    <td>₿</td>
+                    <td>US$</td>
+                    <td>€</td>
+                    <td>¥</td>
+                    <td>£</td>
+                    <td>R$</td>
+                </tr>
+            </table>
+        </div>
+        <div class="area-opcoes">
+            <h2>Conversão</h2>
+            <p>Converta as moedas abaixo. <b>OBS:</b> A contação está de acordo apenas com a data e horário: <strong>16/09/2021 - 14:50 (BRT)</strong></p>
+            <label for="valorConvertido">Valor a ser convertido:</label>
+            <input type="number" id="valor" autocomplete="off">
+            <select id="moeda">
+                <option value="0">Moeda</option>
+                <option value="1">Bitcoin</option>
+                <option value="2">Dólar</option>
+                <option value="3">Euro</option>
+                <option value="4">Iene</option>
+                <option value="5">Libra</option>
+                <option value="6">Real</option>
+            </select>
+            <button onclick="verificaValor()">Converter</button>
+        </div>
+        <h2 id="infoResultado">Resultados Aproximados</h2>
+        <div id="resultado"></div>
+    </div>
+    <script>
+        const valor = document.querySelector("input#valor");
+        const moeda = document.querySelector("select#moeda");
+        const infoResultado = document.querySelector("h2#infoResultado");
+        const resultado = document.querySelector("div#resultado");
+
+        const cotacoes = {
+            bitcoin: {
+                USD: 47886.70,
+                EUR: 40823.25,
+                JPY: 5265197.84,
+                GBP: 34686.09,
+                BRL: 251470.89
+            },
+            dolar: {
+                BTC: 0.000021,
+                EUR: 0.85,
+                JPY: 109.71,
+                GBP: 0.73,
+                BRL: 5.26
+            },
+            euro: {
+                BTC: 0.000025,
+                USD: 1.18,
+                JPY: 128.97,
+                GBP: 0.85,
+                BRL: 6.19
+            },
+            iene: {
+                BTC: 0.00000019,
+                USD: 0.0091,
+                EUR: 0.0078,
+                GBP: 0.0066,
+                BRL: 0.048
+            },
+            libra: {
+                BTC: 0.000029,
+                USD: 1.38,
+                EUR: 1.17,
+                JPY: 151.15,
+                BRL: 7.25
+            },
+            real: {
+                BTC: 0.0000039,
+                USD: 0.19,
+                EUR: 0.16,
+                JPY: 20.86,
+                GBP: 0.14
+            }
+        }
+
+        const simbolos = ["₿", "US$", "€", "¥", "£", "R$"];
+
+        const verificaValor = () => {
+            if (valor.value == "")
+                alert("Valores incorretos ou não informados. Por favor, digite um valor válido.");
+            else verificaOpcoes();
+        }
+
+        const verificaOpcoes = () => {
+            infoResultado.style.display = "block";
+            resultado.innerHTML = "";
+            switch (moeda.value) {
+                case "0":
+                    alert("Por favor, selecione uma moeda primeiro.");
+                    break;
+                case "1":
+                    converteMoeda(valor.value, cotacoes.bitcoin.USD, simbolos[0], simbolos[1]);
+                    converteMoeda(valor.value, cotacoes.bitcoin.EUR, simbolos[0], simbolos[2]);
+                    converteMoeda(valor.value, cotacoes.bitcoin.JPY, simbolos[0], simbolos[3]);
+                    converteMoeda(valor.value, cotacoes.bitcoin.GBP, simbolos[0], simbolos[4]);
+                    converteMoeda(valor.value, cotacoes.bitcoin.BRL, simbolos[0], simbolos[5]);
+                    break;
+                case "2":
+                    converteMoeda(valor.value, cotacoes.dolar.BTC, simbolos[1], simbolos[0]);
+                    converteMoeda(valor.value, cotacoes.dolar.EUR, simbolos[1], simbolos[2]);
+                    converteMoeda(valor.value, cotacoes.dolar.JPY, simbolos[1], simbolos[3]);
+                    converteMoeda(valor.value, cotacoes.dolar.GBP, simbolos[1], simbolos[4]);
+                    converteMoeda(valor.value, cotacoes.dolar.BRL, simbolos[1], simbolos[5]);
+                    break;
+                case "3":
+                    converteMoeda(valor.value, cotacoes.euro.BTC, simbolos[2], simbolos[0]);
+                    converteMoeda(valor.value, cotacoes.euro.USD, simbolos[2], simbolos[1]);
+                    converteMoeda(valor.value, cotacoes.euro.JPY, simbolos[2], simbolos[3]);
+                    converteMoeda(valor.value, cotacoes.euro.GBP, simbolos[2], simbolos[4]);
+                    converteMoeda(valor.value, cotacoes.euro.BRL, simbolos[2], simbolos[5]);
+                    break;
+                case "4":
+                    converteMoeda(valor.value, cotacoes.iene.BTC, simbolos[3], simbolos[0]);
+                    converteMoeda(valor.value, cotacoes.iene.USD, simbolos[3], simbolos[1]);
+                    converteMoeda(valor.value, cotacoes.iene.EUR, simbolos[3], simbolos[2]);
+                    converteMoeda(valor.value, cotacoes.iene.GBP, simbolos[3], simbolos[4]);
+                    converteMoeda(valor.value, cotacoes.iene.BRL, simbolos[3], simbolos[5]);
+                    break;
+                case "5":
+                    converteMoeda(valor.value, cotacoes.libra.BTC, simbolos[4], simbolos[0]);
+                    converteMoeda(valor.value, cotacoes.libra.USD, simbolos[4], simbolos[1]);
+                    converteMoeda(valor.value, cotacoes.libra.EUR, simbolos[4], simbolos[2]);
+                    converteMoeda(valor.value, cotacoes.libra.JPY, simbolos[4], simbolos[3]);
+                    converteMoeda(valor.value, cotacoes.libra.BRL, simbolos[4], simbolos[5]);
+                    break;
+                case "6":
+                    converteMoeda(valor.value, cotacoes.real.BTC, simbolos[5], simbolos[0]);
+                    converteMoeda(valor.value, cotacoes.real.USD, simbolos[5], simbolos[1]);
+                    converteMoeda(valor.value, cotacoes.real.EUR, simbolos[5], simbolos[2]);
+                    converteMoeda(valor.value, cotacoes.real.JPY, simbolos[5], simbolos[3]);
+                    converteMoeda(valor.value, cotacoes.real.GBP, simbolos[5], simbolos[4]);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        const converteMoeda = (moedaX, moedaY, simboloX, simboloY) => {
+            let calculo = (moedaX * moedaY);
+            resultado.innerHTML += `<p><b>${simboloX}</b>${valor.value} = <b>${simboloY}</b>${calculo}</p>`;
+        }
+    </script>
+</body>
+</html>

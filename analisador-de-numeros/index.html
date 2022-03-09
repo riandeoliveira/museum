@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <style>
+        body {
+            background-color: #111;
+            font-family: cursive;
+            text-align: center;
+        }
+
+        h1, a {
+            color: white;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            color: #111;
+            margin: auto;
+            padding: 10px;
+            width: 500px;
+        }
+
+        .styBotao:hover {
+            background-color: #111;
+            color: white;
+            cursor: pointer;
+            font-family: cursive;
+        }
+
+        #vArea, #botao, #res, #redf {
+            display: none;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Analisador de Números</h1>
+    </header>
+    <section>
+        <div>
+            <p id="form">
+                <label for="num">Número inteiro:</label>
+                <input type="number" name="numero" id="numero">
+                <input type="button" value="Adicionar" class="styBotao" onclick="adiciona()">
+            </p>
+            <p id="info"></p>
+            <p><select name="vArea" id="vArea" size="10"></select></p>
+            <p><input type="button" value="Verificar" id="botao" class="styBotao" onclick="verifica()"></p>
+        </div>
+        <div id="res">
+            <p><strong>Análise dos Números:</strong></p>
+            <p id="quantN"></p>
+            <p id="maxN"></p>
+            <p id="minN"></p>
+            <p id="somaN"></p>
+            <p id="med"></p>
+            <p><input type="button" value="Redefinir" id="redf" class="styBotao" onclick="redefine()"></p>
+        </div>
+    </section>
+    <footer>
+        <p><a href="https://www.youtube.com/watch?v=bmVKaAV_7-A" rel="external" target="_blank">Ouvir um lofi para
+                codar</a></p>
+    </footer>
+    <script>
+        var valores = [];
+
+        function adiciona() {
+            // Declarações, conexão entre HTML e JS usando o DOM.
+            let n = document.getElementById("numero");
+            let info = document.getElementById("info");
+            let vArea = document.getElementById("vArea");
+            let botao = document.getElementById("botao");
+            
+            if (n.value == 0) {
+                alert("Dados inválidos ou incompletos! Preencha o campo corretamente.");
+            } else if (valores.includes(n.value)) {
+                alert("Este valor já foi adicionado! Escolha outro.");
+            } else {
+                info.innerHTML = "<strong>Valores já adicionados:</strong>"
+                
+                // Criação de elemento do HTML pelo JS.
+                let newOption = document.createElement("option");
+                newOption.innerHTML = `O valor ${n.value} foi adicionado.`;
+                vArea.appendChild(newOption);
+                
+                // Armazenamento dos valores no array para uso posterior.
+                valores.push(n.value);
+                
+                // Ativação do display de elementos.
+                vArea.style.display = "block";
+                botao.style.display = "block";
+                
+                n.value = "";
+                n.focus();
+            }
+        }
+
+        function verifica() {
+            let offForm = document.getElementById("form");
+            let offBotao = document.getElementById("botao");
+            let onRes = document.getElementById("res");
+            let onRedf = document.getElementById("redf");
+
+            offForm.style.display = "none";
+            offBotao.style.display = "none";
+            onRes.style.display = "block";
+
+            // Total.
+            document.getElementById("quantN").innerHTML = `O total de valores adicionados é <strong>${valores.length}</strong>.`;
+
+            // Maior número.
+            document.getElementById("maxN").innerHTML = `O maior valor informado é <strong>${Math.max(...valores)}</strong>.`;
+
+            // Menor número.
+            document.getElementById("minN").innerHTML = `O menor valor informado é <strong>${Math.min(...valores)}</strong>.`;
+
+            // Soma de todos valores.
+            let soma = 0;
+            for (let c = 0; c < valores.length; c++) {
+                soma += Number(valores[c]);
+            }
+            document.getElementById("somaN").innerHTML = `A soma de todos os valores é <strong>${soma}</strong>.`;
+
+            // Média dos valores.
+            document.getElementById("med").innerHTML = `A média dos valores é <strong>${soma / valores.length}</strong>.`;
+
+            onRedf.style.display = "block";
+        }
+
+        const redefine = () => location.reload()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/AMA.ico" type="image/x-icon">
+    <title>F pra você ;-;</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        #info {
+            position: absolute; top: 15%; left: 45%;
+            display: none;
+        }
+        #info2 {
+            position: absolute; top: 25%; left: 36%;
+            display: none;
+        }
+        #info3 {
+            position: absolute; top: 35%; left: 37.5%;
+            display: none;
+        }
+        #info4 {
+            position: absolute; top: 45%; left: 36.4%;
+            display: none;
+        }
+        #info5 {
+            position: absolute; top: 65%; left: 27.7%;
+            display: none;
+        }
+        .s {
+            position: absolute; top: 75%; left: 42.3%;
+            border: 2px solid white;
+            border-radius: 10px 10px 10px 10px;
+            background: green;
+            width: 100px;
+            height: 30px;
+        }
+        .n {
+            position: absolute; top: 75%; left: 51.6%;
+            border: 2px solid white;
+            border-radius: 10px 10px 10px 10px;
+            background: red;
+            width: 100px;
+            height: 30px;
+        }
+        #S {
+            display: none;
+        }
+        #N {
+            display: none;
+        }
+    </style>
+    <h1 id="info">Você morreu</h1>
+    <h1 id="info2">Mas ainda continua vivo no mundo real</h2>
+    <h1 id="info3">Então aproveite essa chance, pois...</h1>
+    <h1 id="info4">Enquanto houver vida, há esperança!</h1>
+    <h1 id="info5">Deseja jogar novamente e tentar seguir um caminho diferente?</h1>
+    <div id="S">
+        <button class="s" onclick="sim()"><b>Sim</b></button>
+       </div>
+       <div id="N">
+        <button class="n" onclick="nao()"><b>Não</b></button>
+    <script>
+       function texto() {
+         document.getElementById("info").style.display = 'block';
+        }
+         setTimeout(texto, 3000);
+         function texto2() {
+         document.getElementById("info2").style.display = 'block';
+        }
+         setTimeout(texto2, 6000);
+         function texto3() {
+         document.getElementById("info3").style.display = 'block';
+        }
+         setTimeout(texto3, 9000);
+         function texto4() {
+         document.getElementById("info4").style.display = 'block';
+        }
+         setTimeout(texto4, 12000);
+         function texto5() {
+         document.getElementById("info5").style.display = 'block';
+        }
+         setTimeout(texto5, 15000);
+         function botao() {
+         document.getElementById("S").style.display = 'block';
+         }
+         setTimeout(botao, 18000);
+         function botao2() {
+         document.getElementById("N").style.display = 'block';    
+         }
+         setTimeout(botao2, 18000);
+         function sim() {
+            window.location.href="index.html"
+         }
+         function nao() {
+            window.location.href="indexF1.html"
+         }
+    </script>
+</body>
+</html>

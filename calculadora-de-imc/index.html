@@ -1,0 +1,66 @@
+<!-- Calculadora simples que informa o Índice de Massa Corporal de acordo com os dados inseridos pelo usuário. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicons/CSI.ico" type="image/x-icon">
+    <title>Calculadora Simples de IMC</title>
+</head>
+
+<body>
+    <script>
+        alert("Vou calcular o seu Índice de Massa Corporal ( IMC ). Para isso, digite os valores requisitados. Utilize o ponto ( ' . ' ) para separar as medidas, como por exemplo em: 80.5kg e 1.79m. Não é necessário incluir as unidades de medidas, apenas os valores.")
+        var peso = Number(prompt("Insira o seu peso."))
+        var altura = prompt("Insira a sua altura.")
+        // Cálculo do IMC através da fórmula
+        var calculo = (altura * altura)
+        var div = (peso / calculo)
+        var imc = parseFloat(div.toFixed(1)) // O IMC será mostrado apenas com uma casa decimal após a vírgula.
+        alert("Os resultados estão no Console.")
+        console.log("Estes são os seus dados:")
+        console.log("")
+        // As condições estabelecem um requisito para serem mostradas: ter o resultado do cálculo do IMC dentro dos seus valores determinados.
+        // Aqui nessa condição abaixo por exemplo. Se o resultado do cálculo possuir um número igual ou maior que 16 e menor ou igual que 16.9, então estas serão as informações que irão aparecer no Console, isso vale para todas as outras condições mais abaixo.
+        if (imc >= 16 && imc <= 16.9) { // O resultado precisa estar entre 16 e 16.9 para que essa condição e suas informações apareçam no Console.
+            console.log("Classificação: Muito abaixo do peso")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Queda de cabelo, infertilidade, ausência menstrual")
+        }
+        if (imc >= 17 && imc <= 18.4) {
+            console.log("Classificação: Abaixo do peso")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Fadiga, stress, ansiedade")
+        }
+        if (imc >= 18.5 && imc <= 24.9) {
+            console.log("Classificação: Peso normal")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Menor risco de doenças cardíacas e vasculares")
+        }
+        if (imc >= 25 && imc <= 29.9) {
+            console.log("Classificação: Acima do peso")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Fadiga, má circulação, varizes")
+        }
+        if (imc >= 30 && imc <= 34.9) {
+            console.log("Classificação: Obesidade Grau I")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Diabetes, angina, infarto, aterosclerose")
+        }
+        if (imc >= 35 && imc <= 40) {
+            console.log("Classificação: Obesidade Grau II")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Apneia do sono, falta de ar")
+        }
+        if (imc > 40) {
+            console.log("Classificação: Obesidade Grau III")
+            console.log("IMC: " + imc)
+            console.log("O que pode acontecer: Refluxo, dificuldade para se mover, escaras, diabetes, infarto, AVC")
+        }
+    </script>
+</body>
+
+</html>
